@@ -22,8 +22,24 @@ common = SourceFileLoader("common", current_file_path + "/../common.py").load_mo
 # we need to reach the default and the special functions of this module from the module menu
 #
 def start_module():
+    list_options = ["Show",
+                    "Add",
+                    "Remove ",
+                    "Update"]
 
-    # you code
+    ui.print_menu("Human Resources menu", list_options, "Exit to the main menu")
+    decide = ui.get_inputs("", "")
+    if decide == "1":
+        show_table(data_manager.get_table_from_file('hr/persons.csv'))
+    elif decide == "2":
+        current_table = data_manager.get_table_from_file('hr/persons_test.csv')
+        add(current_table)
+    elif decide == "3":
+        remove()
+    elif decide == "4":
+        update()
+    elif decide == "0":
+        # you code
 
     pass
 
@@ -32,7 +48,8 @@ def start_module():
 #
 # @table: list of lists
 def show_table(table):
-
+    title_list = ["id", "name", "birth_date"]
+    ui.print_table(table, title_list)
     # your code
 
     pass
