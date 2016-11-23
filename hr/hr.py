@@ -12,9 +12,11 @@ current_file_path = os.path.dirname(os.path.abspath(__file__))
 # User interface module
 ui = SourceFileLoader("ui", current_file_path + "/../ui.py").load_module()
 # data manager module
-data_manager = SourceFileLoader("data_manager", current_file_path + "/../data_manager.py").load_module()
+data_manager = SourceFileLoader(
+    "data_manager", current_file_path + "/../data_manager.py").load_module()
 # common module
-common = SourceFileLoader("common", current_file_path + "/../common.py").load_module()
+common = SourceFileLoader(
+    "common", current_file_path + "/../common.py").load_module()
 
 
 # start this module by a module menu like the main menu
@@ -27,7 +29,8 @@ def start_module():
                     "Remove ",
                     "Update"]
 
-    ui.print_menu("Human Resources menu", list_options, "Exit to the main menu")
+    ui.print_menu("Human Resources menu", list_options,
+                  "Exit to the main menu")
     decide = ui.get_inputs("", "")
     if decide == "1":
         show_table(data_manager.get_table_from_file('hr/persons.csv'))
@@ -39,14 +42,13 @@ def start_module():
     elif decide == "4":
         update()
     elif decide == "0":
-        # you code
+        pass
 
-    pass
+        # print the default table of records from the file
+        #
+        # @table: list of lists
 
 
-# print the default table of records from the file
-#
-# @table: list of lists
 def show_table(table):
     title_list = ["id", "name", "birth_date"]
     ui.print_table(table, title_list)
@@ -92,7 +94,8 @@ def update(table, id_):
 # ------------------
 
 # the question: Who is the oldest person ?
-# return type: list of strings (name or names if there are two more with the same value)
+# return type: list of strings (name or names if there are two more with
+# the same value)
 def get_oldest_person(table):
 
     # your code
@@ -101,7 +104,8 @@ def get_oldest_person(table):
 
 
 # the question: Who is the closest to the average age ?
-# return type: list of strings (name or names if there are two more with the same value)
+# return type: list of strings (name or names if there are two more with
+# the same value)
 def get_persons_closest_to_average(table):
 
     # your code

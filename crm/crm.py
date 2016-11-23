@@ -13,9 +13,11 @@ current_file_path = os.path.dirname(os.path.abspath(__file__))
 # User interface module
 ui = SourceFileLoader("ui", current_file_path + "/../ui.py").load_module()
 # data manager module
-data_manager = SourceFileLoader("data_manager", current_file_path + "/../data_manager.py").load_module()
+data_manager = SourceFileLoader(
+    "data_manager", current_file_path + "/../data_manager.py").load_module()
 # common module
-common = SourceFileLoader("common", current_file_path + "/../common.py").load_module()
+common = SourceFileLoader(
+    "common", current_file_path + "/../common.py").load_module()
 
 
 # start this module by a module menu like the main menu
@@ -33,16 +35,15 @@ def start_module():
     if decide == "1":
         show_table(data_manager.get_table_from_file('crm/customers.csv'))
     elif decide == "2":
-        current_table = data_manager.get_table_from_file('crm/customers_test.csv')
+        current_table = data_manager.get_table_from_file(
+            'crm/customers_test.csv')
         add(current_table)
     elif decide == "3":
         remove()
     elif decide == "4":
         update()
     elif decide == "0":
-        # you code
-
-    pass
+        pass
 
 
 # print the default table of records from the file
@@ -94,7 +95,8 @@ def update(table, id_):
 
 
 # the question: What is the id of the customer with the longest name ?
-# return type: string (id) - if there are more than one longest name, return the first of descending alphabetical order
+# return type: string (id) - if there are more than one longest name,
+# return the first of descending alphabetical order
 def get_longest_name_id(table):
 
     # your code
@@ -103,7 +105,8 @@ def get_longest_name_id(table):
 
 
 # the question: Which customers has subscribed to the newsletter?
-# return type: list of string (where string is like email+separator+name, separator=";")
+# return type: list of string (where string is like email+separator+name,
+# separator=";")
 def get_subscribed_emails(table):
 
     # your code
