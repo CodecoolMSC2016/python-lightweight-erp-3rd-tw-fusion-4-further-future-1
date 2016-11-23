@@ -34,10 +34,10 @@ def start_module():
     ui.print_menu("Store menu", list_options, "Exit to the main menu")
     decide = ui.get_inputs("", "")
     if decide == "1":
-        show_table()
+        show_table(data_manager.get_table_from_file('store/games_test.csv'))
     elif decide == "2":
-        data_manager.write_table_to_file(
-            'games_test.csv', add('games_test.csv'))
+        current_table = data_manager.get_table_from_file('games_test.csv')
+        add(current_table)
     elif decide == "3":
         remove()
     elif decide == "4":
@@ -50,20 +50,14 @@ def start_module():
 #
 # @table: list of lists
 def show_table(table):
-
-    # your code
-
-    pass
+    for row in table:
+        print(row)
 
 
 # Ask a new record as an input from the user than add it to @table, than return @table
 #
 # @table: list of lists
-def add(table):
-
-    args = ['id', 'title', 'manufacturer', 'price', 'in_stock']
-
-    common.universal_add(table, args)
+def add(current_table):
 
     return table
 

@@ -50,6 +50,5 @@ def gen_random_spec():
     return gen_random_spec
 
 
-def universal_add(file_name, args):
-    print(args)
-    get_table_from_file(table)
+"""def universal_add(table, args):
+    print(args)"""
