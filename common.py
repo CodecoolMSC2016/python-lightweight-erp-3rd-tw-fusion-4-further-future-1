@@ -33,19 +33,19 @@ def gen_random_number():
 
 
 def gen_random_lower():
-    gen_random_lower_utf = random.randint(97, 123)
+    gen_random_lower_utf = random.randint(97, 122)
     gen_random_lower = chr(gen_random_lower_utf)
     return gen_random_lower
 
 
 def gen_random_upper():
-    gen_random_upper_utf = random.randint(65, 91)
+    gen_random_upper_utf = random.randint(65, 90)
     gen_random_upper = chr(gen_random_upper_utf)
     return gen_random_upper
 
 
 def gen_random_spec():
-    gen_random_spec_utf = random.randint(33, 39)
+    gen_random_spec_utf = random.randint(33, 38)
     gen_random_spec = chr(gen_random_spec_utf)
     return gen_random_spec
 
