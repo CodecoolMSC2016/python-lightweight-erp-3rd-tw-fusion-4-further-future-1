@@ -12,16 +12,33 @@
 # @table: list of lists - the table to print out
 # @title_list: list of strings - the head of the table
 def print_table(table, title_list):
-
-    # your code
-
-    pass
-
+    # max_length = [[0] * (len(title_list) - 1)]
+    max_length = [len(title) for title in title_list]
+    for row in table:
+        for i in range(len(max_length)):
+            if len(row[i]) > max_length[i]:
+                max_length[i] = len(row[i])
+    for item in range(len(max_length)):
+        max_length[item] += 2
+    print(max_length)
+    ma = 0
+    for num in max_length:
+        ma = ma + num
+    print(ma)
+    print("/" + ("-" * (ma + (len(max_length) - 1))) + chr(92))
+    for mb in range(len(max_length)):
+        print("|" + title_list[mb].center(max_length[mb]), end="")
+    print("|")
+    for mc in range(len(max_length)):
+        print("|" + "-" * (max_length[mc]), end="")
+    print("|")
 
 # This function needs to print result of the special functions
 #
 # @result: string or list or dictionary - result of the special function
 # @label: string - label of the result
+
+
 def print_result(result, label):
 
     # your code
@@ -67,6 +84,4 @@ def get_inputs(list_labels, title):
 # @message: string - the error message
 def print_error_message(message):
 
-    # your code
-
-    pass
+    print(message)

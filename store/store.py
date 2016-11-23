@@ -34,7 +34,7 @@ def start_module():
     ui.print_menu("Store menu", list_options, "Exit to the main menu")
     decide = ui.get_inputs("", "")
     if decide == "1":
-        show_table()
+        show_table(data_manager.get_table_from_file("store/games_test.csv"))
     elif decide == "2":
         data_manager.write_table_to_file(
             'games_test.csv', add('games_test.csv'))
@@ -50,10 +50,8 @@ def start_module():
 #
 # @table: list of lists
 def show_table(table):
-
-    # your code
-
-    pass
+    title_list = ["id", "title", "manufacturer", "price", "in stock"]
+    ui.print_table(table, title_list)
 
 
 # Ask a new record as an input from the user than add it to @table, than return @table

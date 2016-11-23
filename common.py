@@ -48,8 +48,3 @@ def gen_random_spec():
     gen_random_spec_utf = random.randint(33, 38)
     gen_random_spec = chr(gen_random_spec_utf)
     return gen_random_spec
-
-
-def universal_add(file_name, args):
-    print(args)
-    get_table_from_file(table)
