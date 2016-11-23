@@ -14,9 +14,11 @@ current_file_path = os.path.dirname(os.path.abspath(__file__))
 # User interface module
 ui = SourceFileLoader("ui", current_file_path + "/../ui.py").load_module()
 # data manager module
-data_manager = SourceFileLoader("data_manager", current_file_path + "/../data_manager.py").load_module()
+data_manager = SourceFileLoader(
+    "data_manager", current_file_path + "/../data_manager.py").load_module()
 # common module
-common = SourceFileLoader("common", current_file_path + "/../common.py").load_module()
+common = SourceFileLoader(
+    "common", current_file_path + "/../common.py").load_module()
 
 
 # start this module by a module menu like the main menu
@@ -24,10 +26,24 @@ common = SourceFileLoader("common", current_file_path + "/../common.py").load_mo
 # we need to reach the default and the special functions of this module from the module menu
 #
 def start_module():
+    list_options = ["Show",
+                    "Add",
+                    "Remove ",
+                    "Update"]
 
-    # you code
-
-    pass
+    ui.print_menu("Store menu", list_options, "Exit to the main menu")
+    decide = ui.get_inputs("", "")
+    if decide == "1":
+        show_table()
+    elif decide == "2":
+        data_manager.write_table_to_file(
+            'games_test.csv', add('games_test.csv'))
+    elif decide == "3":
+        remove()
+    elif decide == "4":
+        update()
+    elif decide == "0":
+        pass
 
 
 # print the default table of records from the file
@@ -45,7 +61,9 @@ def show_table(table):
 # @table: list of lists
 def add(table):
 
-    # your code
+    args = ['id', 'title', 'manufacturer', 'price', 'in_stock']
+
+    common.universal_add(table, args)
 
     return table
 

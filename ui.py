@@ -56,10 +56,8 @@ def print_menu(title, list_options, exit_message):
 # @title: string - title of the "input section"
 # @inputs: list of string - list of the received values from the user
 def get_inputs(list_labels, title):
-    inputs = []
     print(list_labels, title)
-    inputs.append(input())
-    # your code
+    inputs = input()
 
     return inputs
 

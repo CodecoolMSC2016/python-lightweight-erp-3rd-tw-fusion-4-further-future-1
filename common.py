@@ -15,8 +15,10 @@ import random
 def generate_random(table):
     flag = 1
     while flag == 1:
-        generated = ('' + gen_random_lower() + gen_random_upper() + gen_random_number() + gen_random_number())
-        generated = (generated + gen_random_upper() + gen_random_lower() + gen_random_spec() + gen_random_spec())
+        generated = ('' + gen_random_lower() + gen_random_upper() +
+                     gen_random_number() + gen_random_number())
+        generated = (generated + gen_random_upper() +
+                     gen_random_lower() + gen_random_spec() + gen_random_spec())
         for i in table:
             if generated in i:
                 flag = 1
@@ -46,3 +48,8 @@ def gen_random_spec():
     gen_random_spec_utf = random.randint(33, 39)
     gen_random_spec = chr(gen_random_spec_utf)
     return gen_random_spec
+
+
+def universal_add(file_name, args):
+    print(args)
+    get_table_from_file(table)
