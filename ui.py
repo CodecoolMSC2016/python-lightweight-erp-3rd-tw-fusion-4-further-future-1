@@ -47,6 +47,9 @@ def print_result(result, label):
     if type(result) == dict:
         for k in result.items():
             print(k)
+    elif type(result) == list:
+        for row in result:
+            print(row)
     else:
         print(result)
 
