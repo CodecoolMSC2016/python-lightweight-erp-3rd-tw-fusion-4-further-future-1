@@ -35,13 +35,19 @@ def start_module():
     if decide == "1":
         show_table(data_manager.get_table_from_file('crm/customers.csv'))
     elif decide == "2":
-        current_table = data_manager.get_table_from_file(
-            'crm/customers.csv')
-        add(current_table)
+        current_table = data_manager.get_table_from_file('crm/customers.csv')
+        data_manager.write_table_to_file(
+            'crm/customers.csv', add(current_table))
     elif decide == "3":
-        remove()
+        current_table = data_manager.get_table_from_file('crm/customers.csv')
+        identificator = ui.get_inputs("Enter an ID to delete", "")
+        data_manager.write_table_to_file(
+            'crm/customers.csv', remove(current_table, identificator))
     elif decide == "4":
-        update()
+        current_table = data_manager.get_table_from_file('crm/customers.csv')
+        identificator = ui.get_inputs("Enter an ID to update", "")
+        data_manager.write_table_to_file(
+            'crm/customers.csv', update(current_table, identificator))
     elif decide == "0":
         pass
 
@@ -62,8 +68,12 @@ def show_table(table):
 # @table: list of lists
 def add(table):
 
-    # your code
-
+    title_list = ["name", "e-mail", "subscribed"]
+    args = []
+    args.append(common.generate_random(table))
+    for arg in range(len(title_list)):
+        args.append(ui.get_inputs(("Please enter the " + title_list[arg]), ""))
+    table.append(args)
     return table
 
 
@@ -73,9 +83,10 @@ def add(table):
 # @id_: string
 def remove(table, id_):
 
-    # your code
-
-    return table
+    for row in range(len(table)):
+        if table[row][0] == id_:
+            table.remove(table[row])
+            return table
 
 
 # Update the record in @table having the id @id_ by asking the new data from the user,
@@ -85,9 +96,16 @@ def remove(table, id_):
 # @id_: string
 def update(table, id_):
 
-    # your code
+    title_list = ["name", "e-mail", "subscribed"]
+    args = []
+    args.append(id_)
+    for arg in range(len(title_list)):
+        args.append(ui.get_inputs(("Please enter the " + title_list[arg]), ""))
 
-    return table
+    for row in range(len(table)):
+        if table[row][0] == id_:
+            table[row] = args
+            return table
 
 
 # special functions:
