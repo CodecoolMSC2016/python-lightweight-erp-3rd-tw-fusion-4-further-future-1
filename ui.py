@@ -66,8 +66,8 @@ def print_result(result, label):
 # @exit_message: string - the last option with (0) (example: "Back to main menu")
 def print_menu(title, list_options, exit_message):
     print(title, "\n")
-    for option in list_options:
-        print("({}) {}".format((list_options.index(option)) + 1, option))
+    for option in range(len(list_options)):
+        print("({}) {}".format(option + 1, list_options[option]))
 
     print("(0)", exit_message)
 
