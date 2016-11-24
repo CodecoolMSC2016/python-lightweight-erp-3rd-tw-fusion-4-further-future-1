@@ -57,9 +57,11 @@ def start_module():
     elif decide == "5":
         current_table = data_manager.get_table_from_file(
             'tool_manager/tools.csv')
-        ui.print_result(get_available_tools(current_table), "Available tools by manufacturer: ")
+        ui.print_result(get_available_tools(current_table),
+                        "Available tools by manufacturer: ")
     elif decide == "6":
-        current_table = data_manager.get_table_from_file('tool_manager/tools.csv')
+        current_table = data_manager.get_table_from_file(
+            'tool_manager/tools.csv')
         ui.print_result(get_average_durability_by_manufacturers(current_table),
                         "Average of durability tools by manufacturer: ")
     elif decide == "0":
@@ -136,7 +138,8 @@ def get_available_tools(table):
         row_year = int(row[3])
         row_durab = int(row[4])
         if row_year + row_durab >= year:
-            list_of_available_tools.append(row)
+            list_of_available_tools.append(
+                [row[0], row[1], row[2], int(row[3]), int(row[4])])
     return list_of_available_tools
 
 # the question: What are the average durability time for each manufacturer?
