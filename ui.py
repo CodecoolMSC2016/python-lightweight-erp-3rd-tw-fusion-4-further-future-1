@@ -12,7 +12,6 @@
 # @table: list of lists - the table to print out
 # @title_list: list of strings - the head of the table
 def print_table(table, title_list):
-    # max_length = [[0] * (len(title_list) - 1)]
     max_length = [len(title) for title in title_list]
     for row in table:
         for i in range(len(max_length)):
@@ -20,17 +19,14 @@ def print_table(table, title_list):
                 max_length[i] = len(row[i])
     for item in range(len(max_length)):
         max_length[item] += 2
-    print(max_length)
     max_length_sum = 0
     for num in max_length:
         max_length_sum += num
-    print(max_length_sum)
     print("/" + ("-" * (max_length_sum + (len(max_length) - 1))) + chr(92))
     for i in range(len(max_length)):
         print("|" + title_list[i].center(max_length[i]), end="")
     print("|")
     for row in table:
-
         for i in range(len(max_length)):
             print("|" + "-" * (max_length[i]), end="")
         print("|")
@@ -46,9 +42,9 @@ def print_table(table, title_list):
 
 def print_result(result, label):
 
-    # your code
-
-    pass
+    print(label)
+    for row in result:
+        print(row)
 
 
 # This function needs to generate outputs like this:
@@ -65,6 +61,7 @@ def print_result(result, label):
 # @list_options: list of strings - the options in the menu
 # @exit_message: string - the last option with (0) (example: "Back to main menu")
 def print_menu(title, list_options, exit_message):
+
     print(title, "\n")
     for option in range(len(list_options)):
         print("({}) {}".format(option + 1, list_options[option]))
@@ -78,8 +75,7 @@ def print_menu(title, list_options, exit_message):
 # @title: string - title of the "input section"
 # @inputs: list of string - list of the received values from the user
 def get_inputs(list_labels, title):
-
-    print(list_labels, title)
+    print(title, list_labels)
     inputs = input()
 
     return inputs
@@ -90,4 +86,5 @@ def get_inputs(list_labels, title):
 # @message: string - the error message
 def print_error_message(message):
 
+    print("Something went wrong.\nSorry about that.")
     print(message)
