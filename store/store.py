@@ -37,7 +37,8 @@ def start_module():
         show_table(data_manager.get_table_from_file('store/games.csv'))
     elif decide == "2":
         current_table = data_manager.get_table_from_file('store/games.csv')
-        add(current_table)
+        data_manager.write_table_to_file('store/games.csv', add(current_table))
+
     elif decide == "3":
         remove()
     elif decide == "4":
@@ -59,7 +60,13 @@ def show_table(table):
 # @table: list of lists
 def add(current_table):
 
-    return table
+    title_list = ["title", "manufacturer", "price", "in stock"]
+    args = []
+    args.append(common.generate_random(current_table))
+    for arg in range(len(title_list)):
+        args.append(ui.get_inputs(("Please enter the " + title_list[arg]), ""))
+    current_table.append(args)
+    return current_table
 
 
 # Remove the record having the id @id_ from the @list, than return @table

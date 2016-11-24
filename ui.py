@@ -67,9 +67,9 @@ def print_result(result, label):
 def print_menu(title, list_options, exit_message):
     print(title, "\n")
     for option in list_options:
-        print(list_options.index(option) + 1, option)
+        print("({}) {}".format((list_options.index(option)) + 1, option))
 
-    print("0", exit_message)
+    print("(0)", exit_message)
 
 
 # This function gets a list of inputs from the user by the terminal
@@ -78,6 +78,7 @@ def print_menu(title, list_options, exit_message):
 # @title: string - title of the "input section"
 # @inputs: list of string - list of the received values from the user
 def get_inputs(list_labels, title):
+
     print(list_labels, title)
     inputs = input()
 

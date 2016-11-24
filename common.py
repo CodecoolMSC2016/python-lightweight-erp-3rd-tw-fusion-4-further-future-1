@@ -24,7 +24,7 @@ def generate_random(table):
                 flag = 1
             if generated not in i:
                 flag = 0
-        return generated
+    return generated
 
 
 def gen_random_number():
