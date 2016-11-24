@@ -72,15 +72,15 @@ def show_table(table):
 # Ask a new record as an input from the user than add it to @table, sthan return @table
 #
 # @table: list of lists
-def add(current_table):
+def add(table):
 
     title_list = ["title", "manufacturer", "price", "in stock"]
     args = []
-    args.append(common.generate_random(current_table))
+    args.append(common.generate_random(table))
     for arg in range(len(title_list)):
         args.append(ui.get_inputs(("Please enter the " + title_list[arg]), ""))
-    current_table.append(args)
-    return current_table
+    table.append(args)
+    return table
 
 
 # Remove the record having the id @id_ from the @list, than return @table
@@ -101,6 +101,7 @@ def remove(table, id_):
 # @table: list of lists
 # @id_: string
 def update(table, id_):
+
     title_list = ["title", "manufacturer", "price", "in stock"]
     args = []
     args.append(id_)
