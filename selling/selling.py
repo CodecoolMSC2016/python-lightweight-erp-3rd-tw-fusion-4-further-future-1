@@ -54,16 +54,6 @@ def start_module():
         identificator = ui.get_inputs("Enter an ID to update", "")
         data_manager.write_table_to_file(
             'selling/sellings.csv', update(current_table, identificator))
-    elif decide == "5":
-        current_table = data_manager.get_table_from_file(
-            'selling/sellings.csv')
-        ui.print_result(get_counts_by_manufacturers(
-            current_table), "Number of games by manufacturers: ")
-    elif decide == "6":
-        current_table = data_manager.get_table_from_file(
-            'selling/sellings.csv')
-        ui.print_result(get_average_by_manufacturer(current_table, ui.get_inputs(
-            "Enter the manufacturer", "")), "Average of games: ")
     elif decide == "0":
         pass
 

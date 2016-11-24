@@ -30,7 +30,7 @@ def start_module():
                     "Remove ",
                     "Update"]
 
-    ui.print_menu("Tool manager menu", list_options, "Exit to the main menu")
+    ui.print_menu("Customers menu", list_options, "Exit to the main menu")
     decide = ui.get_inputs("", "")
     if decide == "1":
         show_table(data_manager.get_table_from_file('crm/customers.csv'))
