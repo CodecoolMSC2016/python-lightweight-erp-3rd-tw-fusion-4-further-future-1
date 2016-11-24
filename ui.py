@@ -21,18 +21,23 @@ def print_table(table, title_list):
     for item in range(len(max_length)):
         max_length[item] += 2
     print(max_length)
-    ma = 0
+    max_length_sum = 0
     for num in max_length:
-        ma = ma + num
-    print(ma)
-    print("/" + ("-" * (ma + (len(max_length) - 1))) + chr(92))
-    for mb in range(len(max_length)):
-        print("|" + title_list[mb].center(max_length[mb]), end="")
+        max_length_sum += num
+    print(max_length_sum)
+    print("/" + ("-" * (max_length_sum + (len(max_length) - 1))) + chr(92))
+    for i in range(len(max_length)):
+        print("|" + title_list[i].center(max_length[i]), end="")
     print("|")
-    for mc in range(len(max_length)):
-        print("|" + "-" * (max_length[mc]), end="")
-    print("|")
+    for row in table:
 
+        for i in range(len(max_length)):
+            print("|" + "-" * (max_length[i]), end="")
+        print("|")
+        for i in range(len(max_length)):
+            print("|" + row[i].center(max_length[i]), end="")
+        print("|")
+    print(chr(92) + ("-" * (max_length_sum + (len(max_length) - 1))) + "/")
 # This function needs to print result of the special functions
 #
 # @result: string or list or dictionary - result of the special function

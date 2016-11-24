@@ -35,7 +35,7 @@ def start_module():
     if decide == "1":
         show_table(data_manager.get_table_from_file('hr/persons.csv'))
     elif decide == "2":
-        current_table = data_manager.get_table_from_file('hr/persons_test.csv')
+        current_table = data_manager.get_table_from_file('hr/persons.csv')
         add(current_table)
     elif decide == "3":
         remove()

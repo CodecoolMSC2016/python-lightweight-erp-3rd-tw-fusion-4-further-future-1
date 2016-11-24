@@ -34,9 +34,9 @@ def start_module():
     ui.print_menu("Store menu", list_options, "Exit to the main menu")
     decide = ui.get_inputs("", "")
     if decide == "1":
-        show_table(data_manager.get_table_from_file('store/games_test.csv'))
+        show_table(data_manager.get_table_from_file('store/games.csv'))
     elif decide == "2":
-        current_table = data_manager.get_table_from_file('games_test.csv')
+        current_table = data_manager.get_table_from_file('store/games.csv')
         add(current_table)
     elif decide == "3":
         remove()

@@ -36,7 +36,7 @@ def start_module():
         show_table(data_manager.get_table_from_file('crm/customers.csv'))
     elif decide == "2":
         current_table = data_manager.get_table_from_file(
-            'crm/customers_test.csv')
+            'crm/customers.csv')
         add(current_table)
     elif decide == "3":
         remove()

@@ -39,7 +39,7 @@ def start_module():
         show_table(data_manager.get_table_from_file('selling/sellings.csv'))
     elif decide == "2":
         current_table = data_manager.get_table_from_file(
-            'selling/sellings_test.csv')
+            'selling/sellings.csv')
         add(current_table)
     elif decide == "3":
         remove()
