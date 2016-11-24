@@ -27,7 +27,9 @@ def start_module():
     list_options = ["Show",
                     "Add",
                     "Remove ",
-                    "Update"]
+                    "Update",
+                    "Show oldest person",
+                    "Show person closest to average age"]
 
     ui.print_menu("Human Resources menu", list_options,
                   "Exit to the main menu")
@@ -47,6 +49,12 @@ def start_module():
         identificator = ui.get_inputs("Enter an ID to update", "")
         data_manager.write_table_to_file(
             'hr/persons.csv', update(current_table, identificator))
+    elif decide == "5":
+        current_table = data_manager.get_table_from_file("hr/persons.csv")
+        ui.print_result(get_oldest_person(current_table), "Oldest person is: ")
+    elif decide == "6":
+        current_table = data_manager.get_table_from_file("hr/persons.csv")
+        ui.print_result(get_persons_closest_to_average(current_table), "Person closest to average age: ")
     elif decide == "0":
         pass
 
@@ -113,16 +121,35 @@ def update(table, id_):
 # the same value)
 def get_oldest_person(table):
 
-    # your code
-
-    pass
-
+    oldest_person = []
+    birth_date = table[0][2]
+    for row in table:
+        if row[2] < birth_date:
+            birth_date = row[2]
+    for row in table:
+        if row[2] == birth_date:
+            oldest_person.append(row[1])
+    return oldest_person
 
 # the question: Who is the closest to the average age ?
 # return type: list of strings (name or names if there are two more with
 # the same value)
+
+
 def get_persons_closest_to_average(table):
 
-    # your code
-
-    pass
+    person_closest_average = []
+    average = 0
+    counter = 0
+    for row in table:
+        average += int(row[2])
+        counter += 1
+    average = average / counter
+    difference = 9999
+    for row in table:
+        if abs(int(row[2]) - average) < difference:
+            difference = abs(int(row[2]) - average)
+    for row in table:
+        if difference == abs(int(row[2]) - average):
+            person_closest_average.append(row[1])
+    return person_closest_average
