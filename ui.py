@@ -43,8 +43,12 @@ def print_table(table, title_list):
 def print_result(result, label):
 
     print(label)
-    for row in result:
-        print(row)
+
+    if type(result) == dict:
+        for k in result.items():
+            print(k)
+    else:
+        print(result)
 
 
 # This function needs to generate outputs like this:

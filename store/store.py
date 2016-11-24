@@ -29,7 +29,9 @@ def start_module():
     list_options = ["Show",
                     "Add",
                     "Remove ",
-                    "Update"]
+                    "Update",
+                    "Count games all by manufacturers",
+                    "Average of games in stock"]
 
     ui.print_menu("Store menu", list_options, "Exit to the main menu")
     decide = ui.get_inputs("", "")
@@ -48,6 +50,13 @@ def start_module():
         identificator = ui.get_inputs("Enter an ID to update", "")
         data_manager.write_table_to_file(
             'store/games.csv', update(current_table, identificator))
+    elif decide == "5":
+        current_table = data_manager.get_table_from_file('store/games.csv')
+        ui.print_result(get_counts_by_manufacturers(current_table), "Number of games by manufacturers: ")
+    elif decide == "6":
+        current_table = data_manager.get_table_from_file('store/games.csv')
+        ui.print_result(get_average_by_manufacturer(current_table, ui.get_inputs(
+            "Enter the manufacturer", "")), "Average of games: ")
     elif decide == "0":
         pass
 
@@ -111,16 +120,23 @@ def update(table, id_):
 # the question: How many different kinds of game are available of each manufacturer?
 # return type: a dictionary with this structure: { [manufacturer] : [count] }
 def get_counts_by_manufacturers(table):
+    manufacturers = {}
+    for row in table:
+        if not row[2] in manufacturers:
+            manufacturers[row[2]] = 1
+        else:
+            manufacturers[row[2]] += 1
 
-    # your code
-
-    pass
+    return manufacturers
 
 
 # the question: What is the average amount of games in stock of a given manufacturer?
 # return type: number
 def get_average_by_manufacturer(table, manufacturer):
-
-    # your code
-
-    pass
+    sum_games = 0
+    counter = 0
+    for row in table:
+        if row[2] == manufacturer:
+            counter += 1
+            sum_games += int(row[4])
+    return sum_games / counter
