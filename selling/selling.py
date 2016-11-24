@@ -31,7 +31,9 @@ def start_module():
     list_options = ["Show",
                     "Add",
                     "Remove ",
-                    "Update"]
+                    "Update",
+                    "Get lowest price item ID",
+                    "Get items sold between given dates"]
 
     ui.print_menu("Selling menu", list_options, "Exit to the main menu")
     decide = ui.get_inputs("", "")
@@ -54,6 +56,21 @@ def start_module():
         identificator = ui.get_inputs("Enter an ID to update", "")
         data_manager.write_table_to_file(
             'selling/sellings.csv', update(current_table, identificator))
+    elif decide == "5":
+        current_table = data_manager.get_table_from_file(
+            'selling/sellings.csv')
+        ui.print_result(get_lowest_price_item_id(current_table), "Lowest price items ID: ")
+    elif decide == "6":
+        current_table = data_manager.get_table_from_file(
+            'selling/sellings.csv')
+        ui.print_result(get_items_sold_between(current_table,
+                                               ui.get_inputs("Enter Starting month: ", ""),
+                                               ui.get_inputs("Enter Starting day: ", ""),
+                                               ui.get_inputs("Enter Starting year: ", ""),
+                                               ui.get_inputs("Enter Ending month: ", ""),
+                                               ui.get_inputs("Enter Ending day: ", ""),
+                                               ui.get_inputs("Enter Ending year: ", "")),
+                        "Available tools by manufacturer: ")
     elif decide == "0":
         pass
 
@@ -119,16 +136,34 @@ def update(table, id_):
 # if there are more than one with the lowest price, return the first of
 # descending alphabetical order
 def get_lowest_price_item_id(table):
-
-    # your code
-
-    pass
+    lowest = table[0][2]
+    result = ""
+    for row in table:
+        if row[2] < lowest:
+            lowest = row[2]
+    lowest_found = False
+    for row in table:
+        if (row[2] == lowest) and not lowest_found:
+            result = row[0]
+            lowest_found = True
+    return result
 
 
 # the question: Which items are sold between two given dates ? (from_date < birth_date < to_date)
 # return type: list of lists (the filtered table)
 def get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to):
 
-    # your code
+    converted_dates_from = common.convert_date(month_from, day_from, year_from)
+    converted_dates_to = common.convert_date(month_to, day_to, year_to)
 
-    pass
+    result = []
+
+    for row in table:
+        if (common.convert_date(row[3], row[4], row[5]) > converted_dates_from and
+                common.convert_date(row[3], row[4], row[5]) < converted_dates_to):
+            row[2] = int(row[2])
+            row[3] = int(row[3])
+            row[4] = int(row[4])
+            row[5] = int(row[5])
+            result.append(row)
+    return result

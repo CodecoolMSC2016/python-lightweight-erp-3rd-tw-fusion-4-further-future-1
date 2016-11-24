@@ -48,3 +48,25 @@ def gen_random_spec():
     gen_random_spec_utf = random.randint(33, 38)
     gen_random_spec = chr(gen_random_spec_utf)
     return gen_random_spec
+
+
+def convert_date(month, day, year):
+    month = str(month)
+    day = str(day)
+    year = str(year)
+    new_month = ""
+    new_day = ""
+    result = ""
+    if len(month) == 1:
+        new_month = "0" + month
+    else:
+        new_month = month
+    if len(day) == 1:
+        new_day = "0" + day
+    else:
+        new_day = day
+    result += year
+    result += new_month
+    result += new_day
+    result = int(result)
+    return result

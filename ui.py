@@ -43,16 +43,8 @@ def print_table(table, title_list):
 def print_result(result, label):
 
     print(label)
-
-    if type(result) == dict:
-        for k in result.items():
-            print(k)
-    elif type(result) == list:
-        for row in result:
-            print(row)
-    else:
-        print(result)
-
+    print("\n")
+    print(result)
 
 # This function needs to generate outputs like this:
 # Main menu:
@@ -67,6 +59,8 @@ def print_result(result, label):
 # @title: string - title of the menu
 # @list_options: list of strings - the options in the menu
 # @exit_message: string - the last option with (0) (example: "Back to main menu")
+
+
 def print_menu(title, list_options, exit_message):
 
     print(title, "\n")
